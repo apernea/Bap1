@@ -1,0 +1,34 @@
+# CLion / CMake / JUCE
+cmake-build-*/
+.idea/
+CMakeLists.txt.user
+*.iml
+*.VC.db
+*.VC.VC.opendb
+
+# Build artifacts
+Builds/
+build/
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.vst3
+*.pdb
+.DS_Store
+
+# JUCE Examples / Extras if not used
+JUCE/examples/
+JUCE/extras/
+
+# Cache files
+CMakeCache.txt
+CMakeFiles/
+
+# User local configs
+JUCE/.vs/
+JUCE/.idea/
+JUCE/Builds/
