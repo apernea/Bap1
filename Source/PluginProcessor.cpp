@@ -7,7 +7,10 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 
-Bap1AudioProcessor::Bap1AudioProcessor() = default;
+Bap1AudioProcessor::Bap1AudioProcessor()
+    : AudioProcessor (BusesProperties().withInput ("Input", juce::AudioChannelSet::stereo(), true)
+                                     .withOutput ("Output", juce::AudioChannelSet::stereo(), true)),
+      parameters(*this, nullptr, "PARAMETERS", createParameterLayout()){}
 Bap1AudioProcessor::~Bap1AudioProcessor() = default;
 
 //==================================================
@@ -55,7 +58,7 @@ bool Bap1AudioProcessor::producesMidi() const {
     #endif
 }
 bool Bap1AudioProcessor::isMidiEffect() const {
-    return true;
+    return false;
 }
 double Bap1AudioProcessor::getTailLengthSeconds() const {
     return 0.0;
@@ -106,20 +109,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout Bap1AudioProcessor::createPa
         false));
     params.push_back(std::make_unique<AudioParameterBool>("bypass","Bypass",
         false));
+
+    return {params.begin(), params.end()};
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
